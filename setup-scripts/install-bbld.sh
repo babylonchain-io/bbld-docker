@@ -6,9 +6,12 @@
 # Get environment variables
 source ~/.bashrc
 
+source bbld.config
+
 # download source code
-git clone https://github.com/babylonchain-io/bbld.git $GOPATH/src/github.com/bbld
+git clone $BBLDREPO $GOPATH/src/github.com/bbld
 cd $GOPATH/src/github.com/bbld
+git checkout $BBLDBRANCH
 
 # HACK: necessary configuration changes
 sed -i -e '/defaultGenerate/s/false/true/' config.go
