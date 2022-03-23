@@ -1,10 +1,5 @@
 #! /bin/bash
-# ==== Installs requirements for bbld =====
-
-# download golang package
-wget https://go.dev/dl/go1.17.7.linux-amd64.tar.gz
-chmod +777 go1.17.7.linux-amd64.tar.gz
-tar -C /usr/local -xzf go1.17.7.linux-amd64.tar.gz
+# ==== Setup of requirements for bbld =====
 
 # create symbolic links
 ln -s /usr/local/go/bin/* /usr/bin/
