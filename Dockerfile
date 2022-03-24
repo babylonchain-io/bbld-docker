@@ -13,8 +13,17 @@ WORKDIR /setup-scripts
 RUN wget https://go.dev/dl/go1.17.7.linux-amd64.tar.gz
 RUN chmod +777 go1.17.7.linux-amd64.tar.gz
 RUN tar -C /usr/local -xzf go1.17.7.linux-amd64.tar.gz
+RUN ln -s /usr/local/go/bin/* /usr/bin/
+RUN mkdir  /root/go
+RUN mkdir  /root/go/src
+RUN mkdir   /root/go/bin
 
-RUN ./setup-requirements.sh
+ENV GOPATH  $HOME/go
+ENV GOROOT  /usr/local/go
+ENV GOBIN   $GOROOT/bin
+ENV GOTOOLS $GOROOT/pkg/tool
+ENV PATH    $PATH:$GOBIN:$GOTOOLS:$GOPATH
+
 RUN ./install-bbld.sh
 
 WORKDIR /root
