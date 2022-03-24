@@ -14,7 +14,7 @@ cd $GOPATH/src/github.com/bbld
 git checkout $BBLDBRANCH
 
 # HACK: necessary configuration changes
-sed -i -e '/defaultGenerate/s/false/true/' config.go
+# sed -i -e '/defaultGenerate/s/false/true/' config.go
 sed -i -e '/defaultHomeDir/s/btcd/bbld/' config.go
 
 # compile and install
