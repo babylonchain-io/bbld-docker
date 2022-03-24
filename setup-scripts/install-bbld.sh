@@ -28,8 +28,15 @@ git clone https://github.com/btcsuite/btcwallet $GOPATH/src/github.com/btcsuite/
 cd $GOPATH/src/github.com/btcsuite/btcwallet
 
 # HACK: necessary configuration changes
-sed -i -e '/btcdDefaultCAFile/s/btcd/bbld/' config.go
+sed -i -e '/btcdDefaultCAFile/s/\"btcd\"/\"bbld\"/' config.go
 
 #compile and install
 make
 GO111MODULE=on go install -v . ./cmd/...
+
+# Create bbld and btcwallet configuration files
+mkdir ~/.bbld
+cp $GOPATH/src/github.com/bbld/sample-btcd.conf ~/.bbld/btcd.conf
+
+mkdir ~/.btcwallet
+cp $GOPATH/src/github.com/btcsuite/btcwallet/sample-btcwallet.conf ~/.btcwallet/btcwallet.conf
